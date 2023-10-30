@@ -11,8 +11,9 @@ In fact, it's a Sony Bravia KDL-32BX400. A rather 'dumb' old TV with no smart fu
 - Python 3 running on some device that is alway on, e.g. a [Raspberry Pi](https://www.raspberrypi.com/products/).
 - You need a Switchbot Bot stickered to your TV.
 - You need a wifi (or zigbee if you have a gateway) power plug with [Tasmota firmare](https://tasmota.github.io/).
+- Setup your tasmota plug. It is highly recommended to give it a fixed local IP address (via your DHCP or by configuring the device itsself). Fill that IP address value into the [TVstandbyKiller.py](TVstandbyKiller.py) as `tasmotaip`.
 - You need to enable your SwitchBot for Dev access via SwitchBotAPI (see [here for further instructions](https://github.com/OpenWonderLabs/SwitchBotAPI#authentication)).
-- Fill in your SwitchBotAPI credentials into the `api.py` file.
+- Fill in your SwitchBotAPI credentials into the [api.py](api.py) file.
 - (optional) install screen (e.g. `apt-get update && apt-get install screen`)
 - (optional) Run the main python script. Preferebly by cron: `line="@reboot screen -dmS TVstandbyKiller python3 /path/to/TVstandbyKiller.py"; (crontab -u $(whoami) -l; echo "$line" ) | crontab -u $(whoami) -`
 - watch the magic happen: `screen -r TVstandbyKiller`
