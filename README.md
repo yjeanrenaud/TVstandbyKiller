@@ -5,7 +5,7 @@ In fact, it's a Sony Bravia KDL-32BX400. A rather 'dumb' old TV with no smart fu
 ## Description
 - We check regulalry (`check_delay`) on the power consumed by the TV by a simple _HTTP-GET request_ to the Tasmota web interface and parses the _JSON_ response. This is done obviously by calling `get_values_from_tasmota()` and the power (and current) values are stored in global variables (yes it's bad design, it was a quick and dirty late night coding)
 - If the power measured is above 55 W, the TV set is thought to be on. It has a typical onsumtion of 60 - 80 W, only dropps seldomly around 47 W if the screen is really dark for a long time and volume is very low. We may safely ignore that here.
-- If the power measured is above 10 W but below 30 W, the TV set is considered to be in standby-mode. The script then invoces a threaded timer (`event` by `start_timer()`) and checks if after `check_delay`, power would be still below the threshold. This is to avoid false positives while powering the TV on etc.
+- If the power measured is above 10 W but below 30 W, the TV set is considered to be in standby-mode. The script then invoces a threaded timer (`event` by `start_timer()`) and checks if after `check_delay`, if power would be still below the threshold. This is to avoid false positives while powering the TV on etc.
 - If the `countdown` timer run out and we still measure a power value that is signifying a standby, we trigger a _button press_ by using the [SwitchBotAPI](https://github.com/OpenWonderLabs/SwitchBotAPI) (by calling `toggle_switchbot()`)
 ## Prerequisites
 - Python 3 running on some device that is alway on, e.g. a [Raspberry Pi](https://www.raspberrypi.com/products/).
