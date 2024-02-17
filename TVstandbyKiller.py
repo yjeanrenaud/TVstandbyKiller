@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#see https://github.com/yjeanrenaud/TVstandbyKiller/
 import api
 import requests
 import threading
